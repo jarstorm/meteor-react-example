@@ -10,7 +10,7 @@ node_modules
 npm-debug.log
 
 # meteor settings file
-settings.json
+# settings.json
 
 # meteor build output files
 *.tar.gz

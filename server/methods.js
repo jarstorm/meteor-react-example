@@ -9,7 +9,7 @@ Meteor.methods({
 
 		console.log(text);
 		check(text, String);
-		
+
 		Resolutions.insert({
 			text,
 			complete: false,   
@@ -19,14 +19,14 @@ Meteor.methods({
 	},
 
 	toggleResolution(resolution, status) {
-		if (!Meteor.userId() !== resolution.user) {
+		if (Meteor.userId() !== resolution.user) {
 			throw new Meteor.Error('not-authorized');
 		}
 		Resolutions.update(resolution._id, {$set: {complete: !resolution.complete}});
 	},
 
 	deleteResolution(resolution) {
-		if (!Meteor.userId() !== resolution.user) {
+		if (Meteor.userId() !== resolution.user) {
 			throw new Meteor.Error('not-authorized');
 		}
 		Resolutions.remove(resolution._id);
